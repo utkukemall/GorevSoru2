@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Rastgele Sayı Üretici</title>
+    <style>
+        .boxed-value {
+  border: 1px solid #ccc;
+  padding: 3px 10px; 
+  border-radius: 4px;
+  margin-left: 8px;
+  background-color: #fafafa;
+  text-align: center; 
+  width: 50px;
+}
+
+
+    </style>
+</head>
+
+<body>
+  <h1>Rastgele Sayı Üretici</h1>
+  <form action="" onsubmit="return false;">
+    <div>
+      <label for="min">Minimum Değer:</label><br>
+      <input type="range" id="min" name="min" value="1" min="1" max="100" oninput="selectValue('min')">
+      <button onclick="selectValue('min')">Seç</button>
+      <span id="minOutput" class="boxed-value">1</span>
+    </div>
+      
+      <div>
+        <label for="max">Maksimum Değer:</label><br>
+        <input type="range" id="max" name="max" value="100" min="1" max="100" oninput="selectValue('max')">
+        <button onclick="selectValue('max')">Seç</button>
+        <span id="maxOutput" class="boxed-value">100</span>
+      </div>
+      
+
+    <br><br>
+    <button onclick="generateRandom()">Üret</button>
+    <hr>
+    <label for="randomNum">Rastgele Sayı:</label>
+    <output id="randomNum"></output>
+  </form>
+
+  <script>
+    function selectValue(type) {
+  const inputField = document.getElementById(type);
+  const outputField = document.getElementById(type + "Output");
+  outputField.textContent = inputField.value; 
+}
+
+    function generateRandom() {
+      const min = parseInt(document.getElementById("min").value);
+      const max = parseInt(document.getElementById("max").value);
+
+      if (min > max) {
+        [min, max] = [max, min]; // Swap values if min is greater than max
+      }
+
+      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      document.getElementById("randomNum").textContent = randomNumber;
+    }
+  </script>
+</body>
+</html>
+
