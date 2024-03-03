@@ -55,7 +55,7 @@
       const max = parseInt(document.getElementById("max").value);
 
       if (min > max) {
-        [min, max] = [max, min]; // Swap values if min is greater than max
+        [min, max] = [max, min]; 
       }
 
       const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
